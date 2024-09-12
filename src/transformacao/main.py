@@ -43,3 +43,16 @@ print(df.count())
 
 #1257 registros
 print(len(df))
+
+#conectar no bd
+# o banco de dados sqlite tem um arquitetura em que roda no cliente , nao precisa subir um servidor de bd (como postgres)
+conn = sqlite3.connect('E:\projeto_scraping_chaves_na_mao\src\data\quotes.db')
+
+#salvar no bd
+df.to_sql('imoveis', conn, if_exists='replace', index=False)
+
+
+#fechar conexao com bd
+conn.close()
+
+print(df.head())
